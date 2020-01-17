@@ -1,3 +1,4 @@
-import Loader from "./Loader/Loader"
+import Loader from './Loader/Loader';
+import * as MyLayout from './Layout/index';
 
-export {Loader}
+export { Loader, MyLayout };

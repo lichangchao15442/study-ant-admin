@@ -1,6 +1,10 @@
 
 // ref: https://umijs.org/config/
 export default {
+  publicPath: 'https://cdn.antd-admin.zuiidea.com/',
+  hash: true,
+  ignoreMomentLocale: true,
+  targets: {ie: 9},
   treeShaking: true,
   routes: [
     {
@@ -14,12 +18,12 @@ export default {
   plugins: [
     // ref: https://umijs.org/plugin/umi-plugin-react.html
     ['umi-plugin-react', {
-      antd: false,
+      antd: true,
       dva: false,
       dynamicImport: false,
       title: 'flip-clock',
       dll: false,
-      
+
       routes: {
         exclude: [
           /components\//,
@@ -27,4 +31,6 @@ export default {
       },
     }],
   ],
+  theme: './config/theme.config.js'
+
 }
