@@ -3,6 +3,7 @@
 .sider {
   box-shadow: fade(@primary-color, 10%) 0 0 28px 0;
   z-index: 10;
+
   :global {
     .ant-layout-sider-children {
       display: flex;
@@ -20,6 +21,7 @@
   justify-content: center;
   padding: 0 24px;
   box-shadow: 0 1px 9px -3px rgba(0, 0, 0, 0.2);
+
   .logo {
     display: flex;
     align-items: center;
@@ -46,6 +48,29 @@
         animation-fill-mode: both;
       }
 
+    }
+  }
+}
+
+.menuContainer {
+  height: ~'calc(100vh-120px)';
+  overflow-x: hidden;
+  flex: 1;
+  padding: 24px 0;
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: rgba(0, 0, 0, 0.2);
+    }
+  }
+
+  :global {
+    .ant-menu-inline {
+      border-right: none;
     }
   }
 }
