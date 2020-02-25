@@ -1,14 +1,16 @@
 import React, { PureComponent } from 'react'
 import PropTypes from 'prop-types'
-import { Layout, Menu, Breadcrumb, Icon } from 'antd'
+import { Layout, Menu, Breadcrumb, Icon, Switch } from 'antd'
 import styles from './Sider.less'
 import { config } from '@/utils'
 import ScrollBar from '../ScrollBar'
 import SiderMenu from './Menu'
+import { withI18n, Trans } from '@lingui/react'
 
 const { Header, Content, Footer } = Layout
 const { SubMenu } = Menu
 
+@withI18n()
 class Sider extends PureComponent {
   render() {
     const {
@@ -34,13 +36,14 @@ class Sider extends PureComponent {
         <div className={styles.brand}>
           <div className={styles.logo}>
             <img alt="logo" src={config.logoPath} />
-            {<h1>{config.siteName}</h1>}
+            {!collapsed && <h1>{config.siteName}</h1>}
           </div>
         </div>
+
         <div className={styles.menuContainer}>
           <ScrollBar options={{ suppressScrollX: true }}>
             <SiderMenu
-              menu={menus}
+              menus={menus}
               theme={theme}
               isMobile={isMobile}
               collapsed={collapsed}
@@ -48,6 +51,23 @@ class Sider extends PureComponent {
             />
           </ScrollBar>
         </div>
+        {!collapsed && (
+          <div className={styles.switchTheme}>
+            <span>
+              <Icon type="bulb" />
+              <Trans>Switch Theme</Trans>
+            </span>
+            <Switch
+              onChange={onThemeChange.bind(
+                this,
+                theme === 'dark' ? 'light' : 'dark'
+              )}
+              defaultChecked={theme === 'dark'}
+              checkedChildren={i18n.t`Dark`}
+              unCheckedChildren={i18n.t`Light`}
+            />
+          </div>
+        )}
       </Layout.Sider>
     )
   }

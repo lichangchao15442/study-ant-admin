@@ -1,5 +1,9 @@
 @import '~@/themes/default';
 
+@shadow-1: 4px 4px 20px 0 rgba(0, 0, 0, 0.01);
+@shadow-2: 4px 4px 40px 0 rgba(0, 0, 0, 0.05);
+@transition-ease-in: all 0.3s ease-out;
+
 // 样式函数
 .text-gradient {
   background-image: -webkit-gradient(
@@ -12,4 +16,11 @@
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+}
+
+.background-hover {
+  transition: @transition-ease-in;
+  &:hover {
+    background-color: @hover-color;
+  }
 }

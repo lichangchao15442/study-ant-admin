@@ -1,6 +1,9 @@
 module.exports = {
-  siteName: 'Ant Admin',
+  siteName: 'AntD Admin',
+  copyright: 'Ant Design Admin ©2020',
   logoPath: '/logo.svg',
+  apiPrefix: '/api/v1',
+  fixedHeader: true,
   layouts: [{
     name: 'primary', //布局名称
     include: [/.*/], // 指定使用该布局的路由规则，规则可为正则表达式或字符串
