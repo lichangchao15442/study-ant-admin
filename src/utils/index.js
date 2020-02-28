@@ -8,6 +8,7 @@ import 'moment/locale/zh-cn'
 import 'moment/locale/pt-br'
 
 export config from './config'
+export { Color } from './theme'
 
 export const languages = i18n ? i18n.languages.map(item => item.key) : []
 export const defaultLanguage = i18n ? i18n.defaultLanguage : ''

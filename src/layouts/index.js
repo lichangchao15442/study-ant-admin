@@ -4,6 +4,15 @@ import { I18nProvider } from '@lingui/react'
 import { ConfigProvider } from 'antd'
 import { langFromPath, defaultLanguage } from 'utils'
 import withRouter from 'umi/withRouter'
+import zh_CN from 'antd/lib/locale-provider/zh_CN'
+import en_US from 'antd/lib/locale-provider/en_US'
+import pt_BR from 'antd/lib/locale-provider/pt_BR'
+
+const languages = {
+  zh: zh_CN,
+  en: en_US,
+  'pt-br': pt_BR
+}
 
 @withRouter
 class Layout extends Component {
@@ -59,11 +68,11 @@ class Layout extends Component {
     // 如果语言包未加载完或正在加载，使用默认语言
     if (!catalogs[language]) language = defaultLanguage
     return (
-      // <ConfigProvider>
-      <I18nProvider language={language} catalogs={catalogs}>
-        <BaseLayout>{children}</BaseLayout>
-      </I18nProvider>
-      // </ConfigProvider>
+      <ConfigProvider locale={languages[language]}>
+        <I18nProvider language={language} catalogs={catalogs}>
+          <BaseLayout>{children}</BaseLayout>
+        </I18nProvider>
+      </ConfigProvider>
     )
   }
 }

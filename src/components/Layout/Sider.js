@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Layout, Menu, Breadcrumb, Icon, Switch } from 'antd'
 import styles from './Sider.less'
 import { config } from '@/utils'
-import ScrollBar from '../ScrollBar'
+import { ScrollBar } from 'components'
 import SiderMenu from './Menu'
 import { withI18n, Trans } from '@lingui/react'
 

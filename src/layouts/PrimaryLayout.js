@@ -1,16 +1,19 @@
 import React, { PureComponent, Fragment } from 'react'
 import PropTypes from 'prop-types'
-import { Layout, Drawer } from 'antd'
+import { Layout, Drawer, BackTop } from 'antd'
 import { MyLayout } from '@/components'
 import { connect } from 'dva'
-import { langFromPath } from '@/utils/index'
+import { langFromPath, pathMatchRegexp } from 'utils'
 import withRouter from 'umi/withRouter'
 import store from 'store'
 import config from 'config'
 import { enquireScreen, unenquireScreen } from 'enquire-js'
+import { GlobalFooter } from 'ant-design-pro'
+import Error from '../pages/error'
 import styles from './PrimaryLayout.less'
 
-const { Sider, Header } = MyLayout
+const { Content } = Layout
+const { Sider, Header, Bread } = MyLayout
 
 @withRouter
 @connect(({ app, loading }) => ({ app, loading }))
@@ -44,11 +47,12 @@ class PrimaryLayout extends PureComponent {
   render() {
     const { isMobile } = this.state
     // console.log('this.props', this.props)
-    const { app, location, dispatch } = this.props
+    const { app, location, dispatch, children } = this.props
     const { theme, collapsed, notifications } = app
     const { onCollapseChange } = this
     const user = store.get('user') || {}
     const routeList = store.get('routeList') || []
+    const permissions = store.get('permissions') || {}
 
     const lang = langFromPath(location.pathname)
     // 处理国际化name属性（默认name为english形式）
@@ -65,6 +69,16 @@ class PrimaryLayout extends PureComponent {
 
     // MenuParentId is equal to -1 is not a available menu.
     const menus = newRouteList.filter(_ => _.menuParentId !== '-1')
+
+    // 当前路由
+    const currentRoute = newRouteList.find(
+      _ => _.route && pathMatchRegexp(_.route, location.pathname)
+    )
+
+    // 当前用户是否有访问该路由的权限
+    const hasPermission = currentRoute
+      ? permissions.visit.includes(currentRoute.id)
+      : false
 
     const headerProps = {
       collapsed,
@@ -122,9 +136,15 @@ class PrimaryLayout extends PureComponent {
             id="primaryLayout"
           >
             <Header {...headerProps}></Header>
-            <div>Content</div>
-            <div>backtop</div>
-            <div>globalfooter</div>
+            <Content className={styles.content}>
+              <Bread routeList={newRouteList} />
+              {hasPermission ? children : <Error />}
+            </Content>
+            <BackTop />
+            <GlobalFooter
+              className={styles.footer}
+              copyright={config.copyright}
+            />
           </div>
         </Layout>
       </Fragment>

@@ -11,7 +11,7 @@ import NProgress from 'nprogress'
 import 'nprogress/nprogress.css'//直接引入nprogress的样式文件
 import PropTypes from 'prop-types'
 
-// import './BaseLayout.less' // 自定义nprogress样式可以随主题颜色改变
+import './BaseLayout.less' // 自定义nprogress样式可以随主题颜色改变
 
 const LayoutMap = {
   primary: PrimaryLayout,

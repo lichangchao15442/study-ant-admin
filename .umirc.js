@@ -48,6 +48,13 @@ export default {
     ],
   ],
   theme: './config/theme.config.js',
+  proxy: {
+    '/api/v1/weather': {
+      target: 'https://api.seniverse.com/',
+      changeOrigin: true,
+      pathRewrite: { '^/api/v1/weather': '/v3/weather' },
+    }
+  },
   alias: {
     api: resolve(__dirname, './src/services/'),
     components: resolve(__dirname, './src/components'),

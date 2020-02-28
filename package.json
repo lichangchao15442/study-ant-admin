@@ -15,6 +15,7 @@
     "antd": "^3.26.11",
     "axios": "^0.19.2",
     "classnames": "^2.2.6",
+    "dva-model-extend": "^0.1.2",
     "enquire-js": "^0.2.1",
     "loadsh": "^0.0.4",
     "nprogress": "^0.2.0",
@@ -22,9 +23,11 @@
     "prop-types": "^15.7.2",
     "qs": "^6.9.1",
     "react": "^16.8.6",
+    "react-countup": "^4.3.3",
     "react-dom": "^16.8.6",
     "react-helmet": "^5.2.1",
     "react-perfect-scrollbar": "^1.5.3",
+    "recharts": "^2.0.0-beta.1",
     "store": "^2.0.12"
   },
   "devDependencies": {
@@ -39,6 +42,7 @@
     "eslint-plugin-react": "^7.11.1",
     "husky": "^0.14.3",
     "lint-staged": "^7.2.2",
+    "mockjs": "^1.1.0",
     "prettier": "^1.19.1",
     "react-test-renderer": "^16.7.0",
     "umi": "^2.7.7",

@@ -1,7 +1,19 @@
 
 
 export const Constant = {
-    ApiPrefix: '/api/v1'
+    ApiPrefix: '/api/v1',
+    Color: {
+        green: '#64ea91',
+        blue: '#8fc9fb',
+        purple: '#d897eb',
+        red: '#f69899',
+        yellow: '#f8c82e',
+        peach: '#f797d6',
+        borderBase: '#e5e5e5',
+        borderSplit: '#f4f4f4',
+        grass: '#d6fbb5',
+        sky: '#c1e0fc',
+    },
 }
 
 export function randomNumber(min, max) {
@@ -27,4 +39,6 @@ export function randomAvatar() {
     return `//image.zuiidea.com/${avatarList[randomNumber(0, avatarList.length - 1)]}?imageView2/1/w/200/h/200/format/webp/q/75|imageslim`
 }
 
+
 export qs from "qs"
+export Mock from 'mockjs'

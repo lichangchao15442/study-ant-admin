@@ -1,0 +1,46 @@
+@import '~themes/vars';
+
+.weather {
+  display: flex;
+  justify-content: space-between;
+  padding: 24px;
+  color: #fff;
+  font-size: 14px;
+  height: 204px;
+
+  .left {
+    display: flex;
+    flex-direction: column;
+    width: 64px;
+    padding-top: 50px;
+
+    .icon {
+      width: 64px;
+      height: 64px;
+      background-position: center;
+      background-size: contain;
+    }
+
+    p {
+      margin-top: 16px;
+    }
+  }
+
+  .right {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+
+    .temperature {
+      color: #fff;
+      font-size: 36px;
+      height: 64px;
+      text-align: right;
+    }
+
+    .city {
+      text-align: right;
+      .text-overflow();
+    }
+  }
+}

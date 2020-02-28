@@ -3,6 +3,7 @@
 @shadow-1: 4px 4px 20px 0 rgba(0, 0, 0, 0.01);
 @shadow-2: 4px 4px 40px 0 rgba(0, 0, 0, 0.05);
 @transition-ease-in: all 0.3s ease-out;
+@purple: #d897eb;
 
 // 样式函数
 .text-gradient {
@@ -23,4 +24,10 @@
   &:hover {
     background-color: @hover-color;
   }
+}
+
+.text-overflow {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
