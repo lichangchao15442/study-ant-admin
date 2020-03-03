@@ -4,5 +4,11 @@ export default {
     queryRouteList: '/routes',
     logoutUser: '/user/logout',
     queryDashboard: '/dashboard',
-    queryUsersList: '/users'
+    queryUsersList: '/users',
+    createUser: 'POST /user',
+    removeUser: 'DELETE /user/:id',
+    updateUser: 'Patch /user/:id',
+    removeUserList: 'POST /users/delete',
+    queryUser: '/user/:id',
+    queryPostList: '/posts'
 }

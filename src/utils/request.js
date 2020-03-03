@@ -2,6 +2,7 @@ import { cloneDeep } from 'lodash'
 import { message } from 'antd'
 import axios from 'axios'
 import { CANCEL_REQUEST_MESSAGE } from 'utils/constant'
+import pathToRegexp from 'path-to-regexp'
 
 const { CancelToken } = axios
 window.cancelRequest = new Map()
@@ -17,12 +18,25 @@ export default function request(options) {
     if (urlMatch) {
       console.log('urlMatch', urlMatch)
     }
+
+    const match = pathToRegexp.parse(url)
+    url = pathToRegexp.compile(url)(data)
+    for (const item of match) {
+      if (item instanceof Object && item.name in cloneData) {
+        delete cloneData[item.name]
+      }
+    }
   } catch (e) {
     message.error(e.message)
   }
 
+  if (method.toUpperCase() === 'GET') {
+    options.params = cloneData
+  } else {
+    options.data = cloneData
+  }
   options.url = url
-  options.params = cloneData
+  // options.params = cloneData
   options.cancelToken = new CancelToken(cancel => {
     window.cancelRequest.set(Symbol(Date.now()), {
       pathname: window.location.pathname,
